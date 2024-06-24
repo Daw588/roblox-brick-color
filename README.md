@@ -1,4 +1,10 @@
-# Roblox Brick Color
+### `@daw588/roblox-brick-color`
+
+<img src="https://img.shields.io/npm/v/%40daw588%2Froblox-brick-color?style=flat&logo=npm&color=0b7dbe"/>
+<img src="https://img.shields.io/github/license/Daw588/roblox-brick-color?style=flat&logo=github&color=0b7dbe"/>
+<img src="https://img.shields.io/github/languages/top/Daw588/roblox-brick-color?style=flat&logo=github&color=0b7dbe"/>
+
+<br/>
 
 Brick color hurts, doesn't it? This package should ease the pain associated with brick colors. No prescription required.
 
@@ -11,10 +17,17 @@ npm install @daw588/roblox-brick-color
 
 Then just import the package and you're all set.
 ```ts
-import { toRGB, toBrickColorID } from "@daw588/roblox-brick-color";
+import { BrickColor } from "@daw588/roblox-brick-color";
 
-toRGB(1); // { r: 243, g: 243, b: 243 }
-toBrickColorID({ r: 243, g: 243, b: 243 }); // 1
+BrickColor.fromID(1); // BrickColor
+BrickColor.fromName("White"); // BrickColor
+BrickColor.fromRGB({ r: 243, g: 243, b: 243 }); // BrickColor
+
+const whiteBrick = BrickColor.fromID(1); // BrickColor
+
+whiteBrick.toID(); // 1
+whiteBrick.toName(); // "White"
+whiteBrick.toRGB(); // { r: 243, g: 243, b: 243 }
 ```
 
 ## Compatibility

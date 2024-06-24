@@ -1,14 +1,4 @@
-import { BRICK_COLOR_MAPPING } from "./dump";
-
-// Prepared ahead of time to avoid unnecessary overhead
-// Sadly JavaScript is not like Rust where I could do something like this at compile time
-const BRICK_COLOR_ENTRIES = Object.entries(BRICK_COLOR_MAPPING);
-
-export type RGB = {
-	r: number,
-	g: number,
-	b: number
-}
+import { IDS, NAMES, RGBS, type RGB, type BrickColorName } from "./dump";
 
 /**
  * Returns the distance between RGB color A, and RGB color B
@@ -23,28 +13,76 @@ function fastDistRGB(a: RGB, b: RGB) {
 }
 
 /**
- * Returns RGB color given the brick color ID. If the given brick color ID is invalid,
- * `undefined` will be returned.
+ * Implements the Roblox BrickColor datatype as a class in JavaScript.
+ * Please note that this is not a 1:1 replica of Roblox implementation.
  */
-export function toRGB(brickColorID: number): RGB | undefined {
-	return BRICK_COLOR_MAPPING[brickColorID.toString() as keyof typeof BRICK_COLOR_MAPPING];
-}
+export class BrickColor {
+	private index: number;
 
-/**
- * Finds the closest brick color to the given RGB color, and returns its brick color ID.
- */
-export function toBrickColorID(rgbColor: RGB): number {
-	let closestDist = Infinity;
-	// We know ahead of time that there will be at least 1 item, hence why `undefined` is supressed here
-	let closestBrickColorID = BRICK_COLOR_ENTRIES[0]![0];
-
-	for (const [brickColorID, otherColorRGB] of BRICK_COLOR_ENTRIES) {
-		const dist = fastDistRGB(rgbColor, otherColorRGB);
-		if (dist < closestDist) {
-			closestDist = dist;
-			closestBrickColorID = brickColorID;
-		}
+	private constructor(index: number) {
+		this.index = index;
 	}
 
-	return parseInt(closestBrickColorID);
+	/**
+	 * Finds the closest BrickColor to the given RGB color, and returns the `BrickColor` instance.
+	 * RGB is accepted within unsigned integer range of `0..255`.
+	 * If you have RGB within floating point range `0..1`, multiply it by 255 before feeding it into the function.
+	 */
+	static fromRGB(rgb: RGB): BrickColor {
+		let closestDist = Infinity;
+		let closestIndex = 0;
+	
+		for (let i = 0; i < RGBS.length; i++) {
+			const dist = fastDistRGB(rgb, RGBS[i]!);
+			if (dist < closestDist) {
+				closestDist = dist;
+				closestIndex = i;
+			}
+		}
+
+		return new BrickColor(closestIndex);
+	}
+
+	/**
+	 * Finds BrickColor by the given name, and returns the `BrickColor` instance if one is found, otherwise `undefined` is returned.
+	 */
+	static fromName(name: BrickColorName): BrickColor | undefined {
+		const index = NAMES.indexOf(name);
+		if (index !== -1) {
+			return new BrickColor(index);
+		}
+		return;
+	}
+
+	/**
+	 * Finds BrickColor by the ID, and returns the `BrickColor` instance if one is found, otherwise `undefiend` is returned.
+	 */
+	static fromID(id: number): BrickColor | undefined {
+		const index = IDS.indexOf(id);
+		if (index !== -1) {
+			return new BrickColor(index);
+		}
+		return;
+	}
+
+	/**
+	 * Returns the name of the `BrickColor` instance.
+	 */
+	toName(): BrickColorName {
+		return NAMES[this.index]!;
+	}
+
+	/**
+	 * Returns the RGB color of the `BrickColor` instance.
+	 */
+	toRGB(): RGB {
+		return RGBS[this.index]!;
+	}
+
+	/**
+	 * Returns the BrickColor ID of the `BrickColor` instance.
+	 */
+	toID(): number {
+		return IDS[this.index]!;
+	}
 }

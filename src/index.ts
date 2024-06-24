@@ -1,4 +1,6 @@
-import { IDS, NAMES, RGBS, type RGB, type BrickColorName, type BrickColorID } from "./dump";
+import { IDS, NAMES, RGBS, type RGB, type BrickColorID, type BrickColorName } from "./dump";
+
+export { type RGB, type BrickColorID, type BrickColorName } from "./dump";
 
 /**
  * Returns the distance between RGB color A, and RGB color B

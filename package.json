@@ -1,0 +1,27 @@
+{
+	"name": "@daw588/roblox-brick-color",
+	"version": "1.0.2",
+	"description": "Brick color hurts, doesn't it? This package should ease the pain associated with brick colors. No prescription required.",
+	"main": "./dist/index.js",
+	"scripts": {
+		"build": "rm -rf './dist/'* && tsc",
+		"publish": "npm publish --access public"
+	},
+	"keywords": [
+		"brick-color",
+		"rgb",
+		"color",
+		"roblox",
+		"rbx",
+		"typescript",
+		"javascript",
+		"library"
+	],
+	"author": {
+		"email": "daw588.dev@gmail.com",
+		"name": "Daw588"
+	},
+	"repository": "github:Daw588/roblox-brick-color",
+	"license": "MIT",
+	"private": false
+}

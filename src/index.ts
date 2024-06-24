@@ -1,4 +1,4 @@
-import { IDS, NAMES, RGBS, type RGB, type BrickColorName } from "./dump";
+import { IDS, NAMES, RGBS, type RGB, type BrickColorName, type BrickColorID } from "./dump";
 
 /**
  * Returns the distance between RGB color A, and RGB color B
@@ -57,7 +57,7 @@ export class BrickColor {
 	/**
 	 * Finds BrickColor by the ID, and returns the `BrickColor` instance if one is found, otherwise `undefiend` is returned.
 	 */
-	static fromID(id: number): BrickColor | undefined {
+	static fromID(id: BrickColorID): BrickColor | undefined {
 		const index = IDS.indexOf(id);
 		if (index !== -1) {
 			return new BrickColor(index);
@@ -82,7 +82,7 @@ export class BrickColor {
 	/**
 	 * Returns the BrickColor ID of the `BrickColor` instance.
 	 */
-	toID(): number {
+	toID(): BrickColorID {
 		return IDS[this.index]!;
 	}
 }

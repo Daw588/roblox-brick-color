@@ -6,8 +6,6 @@ local RGBS = {}
 local NAMES = {}
 local IDS = {}
 
-local unionLiteralType = ""
-
 for id = 1, 1032 do
 	local color = BrickColor.new(id)
 
@@ -22,13 +20,9 @@ for id = 1, 1032 do
 	table.insert(IDS, id)
 	table.insert(NAMES, color.Name)
 	table.insert(RGBS, { r = r, g = g, b = b })
-	
-	unionLiteralType ..= `"{color.Name}"{if id ~= 1032 then " | " else ""}`
 end
 
 print(HttpService:JSONEncode(IDS))
 print(HttpService:JSONEncode(NAMES))
 print(HttpService:JSONEncode(RGBS))
-
-print(unionLiteralType)
 ```

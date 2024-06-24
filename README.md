@@ -19,4 +19,4 @@ toBrickColorId({ r: 243, g: 243, b: 243 }); // 1
 
 ## Compatibility
 
-This package has no dependencies, and it will work in any JavaScript enviroment as long as it supports ES6 module syntax. Types are included, and TypeScript is not required.
+This package has no dependencies, and it will work in any JavaScript environment as long as it supports ES6 module syntax. Types are included, and TypeScript is not required.

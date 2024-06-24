@@ -1,6 +1,6 @@
 {
 	"name": "@daw588/roblox-brick-color",
-	"version": "1.0.3",
+	"version": "2.0.0",
 	"description": "Brick color hurts, doesn't it? This package should ease the pain associated with brick colors. No prescription required.",
 	"main": "./dist/index.js",
 	"scripts": {

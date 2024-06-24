@@ -1,8 +1,10 @@
 ### `@daw588/roblox-brick-color`
 
-<img src="https://img.shields.io/npm/v/%40daw588%2Froblox-brick-color?style=flat&logo=npm&color=0b7dbe"/>
-<img src="https://img.shields.io/github/license/Daw588/roblox-brick-color?style=flat&logo=github&color=0b7dbe"/>
-<img src="https://img.shields.io/github/languages/top/Daw588/roblox-brick-color?style=flat&logo=github&color=0b7dbe"/>
+<div>
+	<img src="https://img.shields.io/npm/v/%40daw588%2Froblox-brick-color?style=flat&logo=npm&color=0b7dbe"/>
+	<img src="https://img.shields.io/github/license/Daw588/roblox-brick-color?style=flat&logo=github&color=0b7dbe"/>
+	<img src="https://img.shields.io/github/languages/top/Daw588/roblox-brick-color?style=flat&logo=github&color=0b7dbe"/>
+</div>
 
 <br/>
 

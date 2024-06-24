@@ -26,25 +26,25 @@ function fastDistRGB(a: RGB, b: RGB) {
  * Returns RGB color given the brick color ID. If the given brick color ID is invalid,
  * `undefined` will be returned.
  */
-export function toRGB(brickColorId: number): RGB | undefined {
-	return BRICK_COLOR_MAPPING[brickColorId.toString() as keyof typeof BRICK_COLOR_MAPPING];
+export function toRGB(brickColorID: number): RGB | undefined {
+	return BRICK_COLOR_MAPPING[brickColorID.toString() as keyof typeof BRICK_COLOR_MAPPING];
 }
 
 /**
  * Finds the closest brick color to the given RGB color, and returns its brick color ID.
  */
-export function toBrickColorId(rgbColor: RGB): number {
+export function toBrickColorID(rgbColor: RGB): number {
 	let closestDist = Infinity;
 	// We know ahead of time that there will be at least 1 item, hence why `undefined` is supressed here
-	let closestBrickColorId = BRICK_COLOR_ENTRIES[0]![0];
+	let closestBrickColorID = BRICK_COLOR_ENTRIES[0]![0];
 
-	for (const [brickColorId, otherColorRGB] of BRICK_COLOR_ENTRIES) {
+	for (const [brickColorID, otherColorRGB] of BRICK_COLOR_ENTRIES) {
 		const dist = fastDistRGB(rgbColor, otherColorRGB);
 		if (dist < closestDist) {
 			closestDist = dist;
-			closestBrickColorId = brickColorId;
+			closestBrickColorID = brickColorID;
 		}
 	}
 
-	return parseInt(closestBrickColorId);
+	return parseInt(closestBrickColorID);
 }

@@ -11,10 +11,10 @@ npm install @daw588/roblox-brick-color
 
 Then just import the package and you're all set.
 ```ts
-import { toRGB, toBrickColorId } from "@daw588/roblox-brick-color";
+import { toRGB, toBrickColorID } from "@daw588/roblox-brick-color";
 
 toRGB(1); // { r: 243, g: 243, b: 243 }
-toBrickColorId({ r: 243, g: 243, b: 243 }); // 1
+toBrickColorID({ r: 243, g: 243, b: 243 }); // 1
 ```
 
 ## Compatibility
